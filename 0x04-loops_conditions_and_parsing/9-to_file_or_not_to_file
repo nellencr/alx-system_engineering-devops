@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times
-file_h="holbertonschool"
+# displays information about the School file
 
-if [ -e "$file_h" ]
+filename="School"
+
+if [ -e $filename ]
 then
-
-    echo "holbertonschool file exists"
-    if [ -s "$file_h" ]
+    echo "School file exists"
+    if [ -s $filename ]
     then
-        echo "holbertonschool file is not empty"
+        echo "School file is not empty"
     else
-        echo "holbertonschool file is empty"
+        echo "School file is empty"
     fi
-
-    if [ -f "$file_h" ]
+    if [ -f $filename ]
     then
-        echo "holbertonschool is a regular file"
+        echo "School is a regular file"
     fi
 else
-    echo "holbertonschool file does not exist"
+    echo "School file does not exist"
 fi
