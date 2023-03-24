@@ -1,5 +1,6 @@
-# Installing a package with a particular version
-package { 'puppet-lint':
+# Installs flask(ver 2.1.0)
+
+package { 'flask':
   ensure   => '2.1.0',
-  provider => gem;
-  }
+  provider => 'pip3',
+}
