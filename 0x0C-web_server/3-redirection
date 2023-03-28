@@ -1,32 +1,17 @@
-
 #!/usr/bin/env bash
-#install ngix and have a file that returns the string "Hello World inside
-
-sudo apt-get update
-sudo apt-get install nginx -y
-echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
-
-new_config=\
-"server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-               root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        server_name _;
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
-        
-        if (\$request_filename ~ redirect_me){
-            rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-        }
-}
-"
-
-echo "$new_config" > /etc/nginx/sites-available/default
-if [ "$(pgrep nginx)" -le 0 ];
-then
-    service nginx start
-else
-    service nginx restart
-fi;
+## Install web server - Nginx.
+## -----------------------------
+## Run sudo update.
+sudo apt-get -y update
+## Install nginx.
+sudo apt-get -y install nginx
+## Change User /var/www
+sudo chown -R ubuntu /var/www
+## Change file default --> index.html to nginx.
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+## Service nginx - start.
+sudo service nginx start
+## Redirecting to another page (The redirection must be a “301 Moved Permanently”)
+sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/" /etc/nginx/sites-available/default
+## Service nginx - restart.
+sudo service nginx restart
