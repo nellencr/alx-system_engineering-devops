@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# to configure a new server using ubuntu
+
+sudo apt-get update
+sudo apt-get install nginix
+sudo vim /etc/nginx/conf.d/custom-http-response-header.conf
+add_header X-Served-By $hostname;
+sudo systemctl reload nginx
+sudo sh -c "echo 'Hello World!' > /var/www/html/index.html"
