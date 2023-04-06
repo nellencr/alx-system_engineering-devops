@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #Configure domain and subdomain zone in www and display information about subdomains
 
-subdomains_info=( "www" "lb-01" "web-01" "web-02" )
+subdomains_all=( "www" "lb-01" "web-01" "web-02" )
 
-concats () {
+runDig () {
     subdomain=$1
     domain=$2
 
@@ -12,12 +12,12 @@ concats () {
 
 if [ $# -eq 1 ]; then
     domain="$1"
-    for i in "${subdomains_info[@]}"
+    for i in "${subdomains_all[@]}"
     do
-	concats "$i" "$domain"
+	runDig "$i" "$domain"
     done
 elif [ $# -eq 2 ]; then
     domain="$1"
     subdomain="$2"
-    concats "$subdomain" "$domain"
+    runDig "$subdomain" "$domain"
 fi
