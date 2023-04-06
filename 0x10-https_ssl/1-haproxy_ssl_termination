@@ -35,10 +35,10 @@ defaults
 
 frontend myfrontend
 	bind *:80
-	bind *:443 ssl crt /etc/haproxy/certs/www.uniqueel.tech.pem
-	default_backend dasilva-backend
+	bind *:443 ssl crt /etc/haproxy/certs/www.allnellen.tech
+	default_backend mybackend
 
-backend dasilva-backend
+backend mybackend
 	balance roundrobin
-	server web-01 54.144.46.99:80 check
-	server web-02 54.209.42.65:80 check
+	server web-01 100.27.4.150:80 check
+	server web-02 100.26.153.16:80 check
