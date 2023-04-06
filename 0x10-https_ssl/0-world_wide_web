@@ -2,7 +2,7 @@
 #Configure domain and subdomain zone in www and display information about subdomains
 
 
-dns_info) {
+dns_info() {
 
 	dig $2.$1 | awk 'c&&!--c;/;; ANSWER SECTION:/{c=1}' | awk -v subdomain=$2 '{print "The subdomain " subdomain " is a " $4 " record and points to " $5 }'
 	return 0
