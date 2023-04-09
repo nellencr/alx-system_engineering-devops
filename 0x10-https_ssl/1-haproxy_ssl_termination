@@ -19,5 +19,5 @@ frontend allnellen-in-tech-front
 
 backend allnellen-in-tech-back
     balance roundrobin
-    server 107263-web-01 100.27.4.150:443 check ssl verify none
-    server 107263-web-02 100.26.153.16:443 check ssl verify none
+    server 107263-web-01 100.26.234.44 check ssl 
+    server 107263-web-02 100.26.153.16 check 
