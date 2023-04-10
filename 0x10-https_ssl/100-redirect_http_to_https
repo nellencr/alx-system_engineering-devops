@@ -41,11 +41,11 @@ frontend allnellen-in-tech-front
         default_backend allnellen-in-tech-back
 
 frontend allnellen-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/akoatem.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/nell.pem
         http-request set-header X-Forwarded-Proto https
         default_backend allnellen-in-tech-back
 
 backend allnellen-in-tech-back
-    balance roundrobin
-    server 107263-web-01 100.26.234.44 
-    server 107263-web-02 100.26.153.16 
+        balance roundrobin
+        server 107263-web-01 100.26.234.44:80 check
+        server 107263-web-02 100.26.153.16:80 check
